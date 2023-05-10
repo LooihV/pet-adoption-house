@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'index.apps.IndexConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -80,7 +81,7 @@ DATABASES = {
         'USER': 'testuser',
         'PASSWORD': 'lapajarapinta1',
         'HOST':'127.0.0.1',
-        'PORT':'3306'
+        'PORT':'3306',
     }
 }
 
