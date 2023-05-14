@@ -20,9 +20,12 @@ class CustomUserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
+    def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('birthDate', '2000-01-01')
+        extra_fields.setdefault('phone', '1234567890')
+        extra_fields.setdefault('adress', '1St. street')
         return self.create_user(email, password, **extra_fields)
     
 
@@ -34,11 +37,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(gtl('staff status'), default=False)
     date_joined = models.DateTimeField(gtl('date joined'), auto_now_add=True)
 
-    birthDate = models.DateField()
+    birthDate = models.DateField(null=True)
     phone = models.CharField(max_length=20)
     adress = models.CharField(max_length=100)
-    identificationType = models.ForeignKey(IdentificationType, on_delete=models.CASCADE)
-    identificationDocument = models.CharField(max_length=50)
+    identificationType = models.ForeignKey(IdentificationType, on_delete=models.CASCADE, null=True)
+    identificationDocument = models.CharField(max_length=50, null=True)
 
     def __str__(self) -> str:
         return self.email
@@ -71,6 +74,7 @@ class Species(models.Model):
 class Pet(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=50)
     birthDate = models.DateField()
     color = models.CharField(max_length=20)
     photo = models.CharField(max_length=300)
