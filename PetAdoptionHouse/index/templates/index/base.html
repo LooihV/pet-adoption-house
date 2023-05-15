@@ -1,25 +1,31 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
-
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock title %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'index/static/styles.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home'%}">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    <footer>
-        <p> Luis Fernando Varon Acosta </p>
-    </footer>
+
+  <header class="header">
+    <nav class="header__nav">
+      <ul class="header__list">
+        <li class="header__item header__item--home"><a href="#">Home</a></li>
+        <li class="header__item header__item--catalogue"><a href="#">Catalogue</a></li>
+        <li class="header__item header__item--account"><a href="#">Account</a></li>
+        <li class="header__item header__item--logo"> Pet Adoption House</li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    {% block content %}{% endblock content %}
+  </div>
+
+  <footer class="footer">
+    <div class="footer__wrapper"></div>
+  </footer>
+
 </body>
 </html>
