@@ -1,0 +1,46 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+    {% if error %}
+        <p class="error"> {{ error }}</p>
+    {% endif %}
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <form class="register" method="POST">
+                    {% csrf_token %}
+                    <div class="register__field">
+                        <i class="register__icon fas fa-user"></i>
+                        <input name="username" type="text" class="register__input" placeholder="Username">
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-envelope"></i>
+                        <input name="email" type="email" class="register__input" placeholder="Email">
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-lock"></i>
+                        <input name="password1" type="password" class="register__input" placeholder="Password">
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-lock"></i>
+                        <input name="password2" type="password" class="register__input" placeholder="Confirm Password">
+                    </div>
+                    <button class="button register__submit" type="submit">
+                        <span class="button__text">Register</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                    {{ form.errors }}			
+                </form>
+                <div class="social-login">
+                    <a class="social-login__a" href="login">Log In</a>
+                </div>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+{% endblock content %}

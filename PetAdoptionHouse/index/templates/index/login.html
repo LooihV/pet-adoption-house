@@ -11,7 +11,7 @@
                         {% csrf_token %}
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
-                            <input name="email" type="text" class="login__input" placeholder="Email">
+                            <input name="username" type="text" class="login__input" placeholder="Email">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
@@ -20,7 +20,8 @@
                         <button class="button login__submit" type="submit">
                             <span class="button__text">Log In</span>
                             <i class="button__icon fas fa-chevron-right"></i>
-                        </button>				
+                        </button>
+                        {{ form.errors }}			
                     </form>
                     <div class="social-login">
                         <a class="social-login__a" href="register">Register</a>
