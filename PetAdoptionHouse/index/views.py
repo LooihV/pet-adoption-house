@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import IdentificationType
 
 
 
@@ -36,8 +37,9 @@ def register_view(request):
             erorr_message = "Error: "+str(e)
             return render(request, 'index/login.html', {'form':form, 'error_message': erorr_message})
     else:
-        form = RegistrationForm()        
-    return render(request, "index/register.html", {'form':form})
+        form = RegistrationForm()
+        idtypes = IdentificationType.objects.all()        
+    return render(request, "index/register.html", {'form':form, 'identification_type':idtypes})
                 
 
 def home(request):

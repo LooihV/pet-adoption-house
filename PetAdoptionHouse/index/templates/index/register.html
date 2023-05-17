@@ -10,27 +10,49 @@
                 <form class="register" method="POST">
                     {% csrf_token %}
                     <div class="register__field">
-                        <i class="register__icon fas fa-user"></i>
-                        <input name="username" type="text" class="register__input" placeholder="Username">
-                    </div>
-                    <div class="register__field">
                         <i class="register__icon fas fa-envelope"></i>
-                        <input name="email" type="email" class="register__input" placeholder="Email">
+                        <input name="email" type="text" class="register__input" placeholder="Email">
                     </div>
                     <div class="register__field">
-                        <i class="register__icon fas fa-lock"></i>
-                        <input name="password1" type="password" class="register__input" placeholder="Password">
+                        <i class="register__icon fas fa-user"></i>
+                        <input name="first_name" type="text" class="register__input" placeholder="First Name">
                     </div>
                     <div class="register__field">
-                        <i class="register__icon fas fa-lock"></i>
-                        <input name="password2" type="password" class="register__input" placeholder="Confirm Password">
+                        <i class="register__icon fas fa-user"></i>
+                        <input name="last_name" type="text" class="register__input" placeholder="Last Name">
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-calendar-alt"></i>
+                        <input name="birth_date" type="date" class="register__input" placeholder="Birth Date">
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-phone"></i>
+                        <input name="phone" type="text" class="register__input" placeholder="Phone">
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-home"></i>
+                        <input name="address" type="text" class="register__input" placeholder="Address">
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-id-card"></i>
+                        <select name="identification_type" class="register__select">
+                            <option value="" disabled selected>Identification Type</option>
+                            {% for idtype in identification_type %}
+                                <option value="{{ idtype.id }}">{{ idtype.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="register__field">
+                        <i class="register__icon fas fa-id-card"></i>
+                        <input name="identificationDocument" type="text" class="register__input" placeholder="Identification Document">
                     </div>
                     <button class="button register__submit" type="submit">
                         <span class="button__text">Register</span>
                         <i class="button__icon fas fa-chevron-right"></i>
                     </button>
-                    {{ form.errors }}			
+                    {{ form.errors }}         
                 </form>
+                
                 <div class="social-login">
                     <a class="social-login__a" href="login">Log In</a>
                 </div>
