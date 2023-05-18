@@ -13,6 +13,14 @@ class RegistrationForm(forms.ModelForm):
     identificationType = forms.ModelChoiceField(queryset=IdentificationType.objects.all())
     identificationDocument = forms.CharField(max_length=50, required=True)
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        password = self.cleaned_data.get('password')
+        if password:
+            user.set_password(password)
+        if commit:
+            user.save()
+        return user
     
     class Meta:
         model = UserCustom
