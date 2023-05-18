@@ -6,15 +6,21 @@
   <title>{% block title %}{% endblock title %}</title>
   <link rel="stylesheet" type="text/css" href="{% static 'index/static/styles.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header class="header">
     <nav class="header__nav">
       <ul class="header__list">
-        <li class="header__item header__item--home"><a href="#">Home</a></li>
-        <li class="header__item header__item--catalogue"><a href="#">Catalogue</a></li>
+        <li class="header__item header__item--home"><a href="{% url 'catalogue'%}">Catalogue</a></li>
+        <li class="header__item header__item--catalogue"><a href="#">Adoptions</a></li>
         <li class="header__item header__item--account"><a href="#">Account</a></li>
+        {% if user.is_authenticated %}
+        <li class="header__item header__item--logout"><a href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+        <li class="header__item header__item--login"><a href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
@@ -24,7 +30,9 @@
   </div>
 
   <footer class="footer">
-    <div class="footer__wrapper"></div>
+    <div class="footer__wrapper">
+      <p>Fotos tomadas de pexels.com</p>
+    </div>
   </footer>
 
 </body>

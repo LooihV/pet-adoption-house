@@ -2,6 +2,7 @@ from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils.translation import gettext_lazy as gtl
+from datetime import date
 
 #---------- User models ----------
 class IdentificationType(models.Model):
@@ -80,6 +81,12 @@ class Pet(models.Model):
     gender = models.CharField(max_length=10)
     def __str__(self) -> str:
         return self.name
+    def get_age(self):
+        today = date.today()
+        age = today.year - self.birthDate.year
+        if today.month < self.birthDate.month or (today.month == self.birthDate.month and today.day < self.birthDate.day):
+            age -= 1
+        return age
 
 # -------------- Adoption Models --------------
 

@@ -1,0 +1,29 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+{% if error %}
+<p class="error"> {{ error }}</p>
+{% endif %}
+
+<div class="pet-detail-card">
+  <div class="pet-detail-card__image">
+    <img src="{{ pet.photo }}" alt="{{ pet.name }} photo">
+  </div>
+  <div class="pet-detail-card__info">
+    <h2>{{ pet.name }}</h2>
+    <p>Age: {{ pet.get_age }}</p>
+    <p>Species: {{ pet.species.name }}</p>
+    <p>Breed: {{ pet.species.breed.name }}</p>
+    <div class="pet-detail-card__button">
+        {% if user.is_authenticated %}
+        <button class="request-adoption-button">Request Adoption</button>
+        {% else %}
+        <button class="request-adoption-button" disabled>
+          You must log in first
+        </button>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -323,3 +323,130 @@
   .register__select--dropdown {
 	padding-right: 0; /* Aumenta el padding para hacer espacio para el ícono */
   }
+
+  .pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2rem; 
+    margin: 6rem 3rem 0 3rem;
+  }
+  
+  .pet_card {
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .pet_card--photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .pet_card--details {
+    padding: 1rem;
+  }
+  
+  .pet_card--name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .pet_card--info {
+    font-size: 1rem;
+  }
+  
+  .pet_card--link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .pet-detail-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 6rem auto auto auto;
+    max-width: 60rem;
+  }
+  
+  .pet-detail-card__image {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* Relación de aspecto 4:3 */
+    overflow: hidden;
+  }
+
+  .pet-detail-card__image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .pet-detail-card__info {
+    flex: 1 1 auto;
+    padding: 1rem;
+  }
+  
+  .pet-detail-card__info h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .pet-detail-card__info p {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .pet-detail-card__button {
+    text-align: right;
+    margin-top: auto;
+  }
+  
+  .request-adoption-button {
+    background-color: #42b983;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+  
+  .request-adoption-button:hover {
+    background-color: #359e71;
+  }
+  @media screen and (max-width: 768px) {
+    .pet-detail-card__image {
+      padding-top: 56.25%; /* Relación de aspecto 16:9 en dispositivos móviles */
+    }
+  }
+  .request-adoption-button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .request-adoption-button[disabled]:hover {
+    background-color: #ccc;
+  }
+  
+  .request-adoption-button[disabled]:after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }

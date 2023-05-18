@@ -4,5 +4,21 @@
 {% if error %}
 <p class="error"> {{ error }}</p>
 {% endif %}
-    
+        <div class="pet-grid">
+            {% for pet in pets %}
+            <div class="pet_card">
+                <a class="pet_card--link" href="{% url 'pet' pet.id %}">
+                    <img class="pet_card--photo" src="{{ pet.photo }}" alt="{{ pet.name }} photo">
+                    <div class="pet_card--details">
+                        <h2 class="pet_card--name">{{ pet.name }} {{ pet.lastname }}</h2>
+                        <p class="pet_card--info">Age: {{ pet.get_age }}</p>
+                        <p class="pet_card--info">Species: {{ pet.species.name }}</p>
+                        <p class="pet_card--info">Breed: {{ pet.species.breed.name }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+
 {% endblock content %}

@@ -137,3 +137,5 @@ AUTH_USER_MODEL = 'index.User'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'index/templates')
 ]
+
+LOGOUT_REDIRECT_URL = 'login'
