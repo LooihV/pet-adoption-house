@@ -42,9 +42,6 @@ def register_view(request):
     return render(request, "index/register.html", {'form':form, 'identification_type':idtypes})
                 
 
-def home(request):
-    return HttpResponse(f"Home!!!")
-
 def catalogue(request):
     return HttpResponse(f"Catalogue")
 
