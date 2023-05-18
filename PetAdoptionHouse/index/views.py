@@ -27,7 +27,7 @@ def login_view(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = RegistrationForm(request, data=request.POST)
+        form = RegistrationForm(request.POST)
         try:
             if form.is_valid():
                 user_profile = form.save()
@@ -38,7 +38,7 @@ def register_view(request):
             return render(request, 'index/login.html', {'form':form, 'error_message': erorr_message})
     else:
         form = RegistrationForm()
-        idtypes = IdentificationType.objects.all()        
+    idtypes = IdentificationType.objects.all()        
     return render(request, "index/register.html", {'form':form, 'identification_type':idtypes})
                 
 
