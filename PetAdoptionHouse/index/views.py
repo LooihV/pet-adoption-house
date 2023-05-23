@@ -1,9 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import RegistrationForm
+from .forms import RegistrationForm, AdoptionForm
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from .models import IdentificationType, Pet
+from .models import User as UserCustom
+from django.shortcuts import get_object_or_404
 
 
 
@@ -56,7 +58,27 @@ def pet(request, pet_id):
     pet = Pet.objects.get(id=pet_id)
     return render(request, 'index/pet_detail.html', {'pet': pet})
 
-def adoption(request):
+
+def request_adoption(request, pet_id):
+    if request.user.is_authenticated:
+        pet = get_object_or_404(Pet, id=pet_id)
+        
+        if request.method == 'POST':
+            form = AdoptionForm(request.POST)
+            if form.is_valid():
+                adoption = form.save(commit=False)
+                adoption.user = request.user
+                adoption.pet = pet
+                adoption.save()
+                return render(request, 'index/adoption_result.html', {'adoption': adoption, 'success': True})
+        else:
+            form = AdoptionForm()
+        
+        return render(request, 'index/request_adoption.html', {'form': form, 'pet': pet})
+    else:
+        return redirect('login')
+
+def adoptions(request):
     return HttpResponse(f"Adoption")
 
 def account(request):

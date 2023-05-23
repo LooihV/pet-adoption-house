@@ -15,13 +15,18 @@
     <p>Species: {{ pet.species.name }}</p>
     <p>Breed: {{ pet.species.breed.name }}</p>
     <div class="pet-detail-card__button">
-        {% if user.is_authenticated %}
-        <button class="request-adoption-button">Request Adoption</button>
-        {% else %}
+      {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'adoption' pet.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button type="submit" class="request-adoption-link">Request adoption</button>
+      {% else %}
         <button class="request-adoption-button" disabled>
           You must log in first
         </button>
-        {% endif %}
+      {% endif %}
+    </div>
+    
     </div>
   </div>
 </div>

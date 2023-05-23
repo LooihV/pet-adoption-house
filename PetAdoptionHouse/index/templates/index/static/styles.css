@@ -420,6 +420,10 @@
     font-size: 1.4rem;
     cursor: pointer;
   }
+
+  .request-adoption-button a {
+    text-decoration: none;
+  }
   
   .request-adoption-button:hover {
     background-color: #359e71;
@@ -429,6 +433,21 @@
       padding-top: 56.25%; /* Relación de aspecto 16:9 en dispositivos móviles */
     }
   }
+  .request-adoption-link {
+    display: inline-block;
+    background-color: #42b983;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+  }
+  
+  .request-adoption-link:hover {
+    background-color: #359e71;
+  }
+  
   .request-adoption-button[disabled] {
     background-color: #ccc;
     cursor: not-allowed;

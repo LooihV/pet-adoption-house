@@ -1,6 +1,7 @@
 from django import forms
-from .models import IdentificationType
+from .models import IdentificationType, Adoption
 from .models import User as UserCustom
+from datetime import date
 
 class RegistrationForm(forms.ModelForm):
     email = forms.EmailField()
@@ -27,4 +28,13 @@ class RegistrationForm(forms.ModelForm):
         fields = ['email', 'password', 'first_name', 'last_name', 'birthDate', 'phone', 'adress', 'identificationType',
                   'identificationDocument']
         
+class AdoptionForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['employee'].initial = UserCustom.objects.filter(is_staff=True).first()
 
+    employee = forms.ModelChoiceField(queryset=UserCustom.objects.filter(is_staff=True))
+    date = forms.DateField(initial=date.today, widget=forms.DateInput(attrs={'readonly': 'readonly'}))
+    class Meta:
+        model = Adoption
+        fields = ['employee', 'date']
