@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pet-adoption-house',
-        'USER': 'testuser',
-        'PASSWORD': 'lapajarapinta1',
-        'HOST':'127.0.0.1',
+        'USER': 'WeedoDEV',
+        'PASSWORD': 'PAHdmin@10',
+        'HOST':'WeedoDEV.mysql.pythonanywhere-services.com',
         'PORT':'3306',
     }
 }
