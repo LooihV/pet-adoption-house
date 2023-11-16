@@ -135,8 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'index.User'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'index/templates'),
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'index/templates')
 ]
 
 LOGOUT_REDIRECT_URL = 'login'
