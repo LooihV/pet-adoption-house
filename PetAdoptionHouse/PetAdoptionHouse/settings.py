@@ -140,4 +140,4 @@ STATICFILES_DIRS = [
 
 LOGOUT_REDIRECT_URL = 'login'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'index/templates/index/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
