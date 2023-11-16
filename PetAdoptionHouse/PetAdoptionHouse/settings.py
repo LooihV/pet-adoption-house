@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'PetAdoptionHouse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pet-adoption-house',
+        'NAME': 'WeedoDEV$pet-adoption-house',
         'USER': 'WeedoDEV',
         'PASSWORD': 'PAHdmin@10',
         'HOST':'WeedoDEV.mysql.pythonanywhere-services.com',
