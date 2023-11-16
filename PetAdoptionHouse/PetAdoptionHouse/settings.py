@@ -139,3 +139,5 @@ STATICFILES_DIRS = [
 ]
 
 LOGOUT_REDIRECT_URL = 'login'
+
+STATIC_ROOT = "/home/WeedoDEV/pet-adoption-house/PetAdoptionHouse/index/templates/index/static"
