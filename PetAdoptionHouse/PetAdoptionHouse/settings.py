@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-(40pw#deg5+y%!gdld*$1)yi7gyl12taosat#)o7+=+b*dfkej
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['weedodev.pythonanywhere.com']
+ALLOWED_HOSTS = ['weedodev.pythonanywhere.com',
+                 '127.0.0.1']
 
 
 # Application definition
@@ -79,10 +80,10 @@ WSGI_APPLICATION = 'PetAdoptionHouse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'WeedoDEV$pet-adoption-house',
-        'USER': 'WeedoDEV',
+        'NAME': 'pet-adoption-house',
+        'USER': 'pahdmin',
         'PASSWORD': 'PAHdmin@10',
-        'HOST':'WeedoDEV.mysql.pythonanywhere-services.com',
+        'HOST':'localhost',
         'PORT':'3306',
     }
 }

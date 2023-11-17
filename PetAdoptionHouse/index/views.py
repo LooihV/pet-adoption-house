@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm, AdoptionForm
 from django.shortcuts import render, redirect, reverse
@@ -83,4 +83,11 @@ def adoptions(request):
 
 def account(request):
     return HttpResponse(f"Account! xd")
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')
+    else:
+        return render(request, 'index/logout.html')
 
