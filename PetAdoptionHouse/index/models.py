@@ -79,6 +79,7 @@ class Pet(models.Model):
     color = models.CharField(max_length=20)
     photo = models.CharField(max_length=300)
     gender = models.CharField(max_length=10)
+    available = models.BooleanField(default=True)
     def __str__(self) -> str:
         return self.name
     def get_age(self):
