@@ -3,10 +3,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm, AdoptionForm
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
-from .models import IdentificationType, Pet
+from .models import IdentificationType, Pet, Adoption
 from .models import User as UserCustom
 from django.shortcuts import get_object_or_404
-
+from datetime import date
+import logging
 
 
 def login_view(request):
@@ -59,9 +60,12 @@ def pet(request, pet_id):
     return render(request, 'index/pet_detail.html', {'pet': pet})
 
 
+logger = logging.getLogger(__name__)
+
+
 def request_adoption(request, pet_id):
     if request.user.is_authenticated:
-        pet = get_object_or_404(Pet, id=pet_id)
+        pet = get_object_or_404(Pet, id=pet_id, available=True)
         
         if request.method == 'POST':
             form = AdoptionForm(request.POST)
@@ -72,13 +76,15 @@ def request_adoption(request, pet_id):
                 adoption.save()
                 return render(request, 'index/adoption_result.html', {'adoption': adoption, 'success': True})
         else:
-            form = AdoptionForm()
-        
+            form = AdoptionForm(initial={'pet': pet})
+
         return render(request, 'index/request_adoption.html', {'form': form, 'pet': pet})
     else:
         return redirect('login')
 
+
 def adoptions(request):
+    adoptions = Adoption.objects.all()
     return HttpResponse(f"Adoption")
 
 def account(request):

@@ -67,12 +67,12 @@ class Breed(models.Model):
 
 class Species(models.Model):
     name = models.CharField(max_length=100)
-    breed = models.ForeignKey(Breed, on_delete=models.CASCADE, null=True)
     def __str__(self) -> str:
         return self.name
 
 class Pet(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE)
+    breed = models.ForeignKey(Breed, on_delete=models.CASCADE, default=None)
     name = models.CharField(max_length=100)
     lastname = models.CharField(max_length=50)
     birthDate = models.DateField()
@@ -84,10 +84,24 @@ class Pet(models.Model):
         return self.name
     def get_age(self):
         today = date.today()
-        age = today.year - self.birthDate.year
-        if today.month < self.birthDate.month or (today.month == self.birthDate.month and today.day < self.birthDate.day):
-            age -= 1
-        return age
+        delta = today - self.birthDate
+
+        years = delta.days // 365
+        months = (delta.days % 365) // 30
+        days = (delta.days % 365) % 30
+
+        age_components = []
+
+        if years > 0:
+            age_components.append(f"{years} {'years' if years > 1 else 'year'}")
+        if months > 0:
+            age_components.append(f"{months} {'months' if months > 1 else 'month'}")
+        if days > 0:
+            age_components.append(f"{days} {'days' if days > 1 else 'day'}")
+
+        age_str = ' '.join(age_components)
+        
+        return age_str
 
 # -------------- Adoption Models --------------
 

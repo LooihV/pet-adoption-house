@@ -10,10 +10,10 @@
     <img src="{{ pet.photo }}" alt="{{ pet.name }} photo">
   </div>
   <div class="pet-detail-card__info">
-    <h2>{{ pet.name }}</h2>
+    <h2>{{ pet.name }} {{ pet.lastname }}</h2>
     <p>Age: {{ pet.get_age }}</p>
     <p>Species: {{ pet.species.name }}</p>
-    <p>Breed: {{ pet.species.breed.name }}</p>
+    <p>Breed: {{ pet.breed.name }}</p>
     <div class="pet-detail-card__button">
       {% if user.is_authenticated %}
         <form method="POST" action="{% url 'adoption' pet.id %}">

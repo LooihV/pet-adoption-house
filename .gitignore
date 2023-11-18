@@ -406,4 +406,5 @@ $RECYCLE.BIN/
 *.3dm
 *.max
 
+.vscode
 # End of https://www.toptal.com/developers/gitignore/api/images

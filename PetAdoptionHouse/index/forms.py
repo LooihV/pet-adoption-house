@@ -10,7 +10,7 @@ class RegistrationForm(forms.ModelForm):
     last_name = forms.CharField(max_length=30, required=True)
     birthDate = forms.DateField(required=True)
     phone = forms.CharField(max_length=20, required=True)
-    adress = forms.CharField(max_length=100, required=False)
+    adress = forms.CharField(max_length=100, required=True)
     identificationType = forms.ModelChoiceField(queryset=IdentificationType.objects.all())
     identificationDocument = forms.CharField(max_length=50, required=True)
 
@@ -28,13 +28,18 @@ class RegistrationForm(forms.ModelForm):
         fields = ['email', 'password', 'first_name', 'last_name', 'birthDate', 'phone', 'adress', 'identificationType',
                   'identificationDocument']
         
-class AdoptionForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['employee'].initial = UserCustom.objects.filter(is_staff=True).first()
 
-    employee = forms.ModelChoiceField(queryset=UserCustom.objects.filter(is_staff=True))
-    date = forms.DateField(initial=date.today, widget=forms.DateInput(attrs={'readonly': 'readonly'}))
+
+class AdoptionForm(forms.ModelForm):
+    employee = forms.ModelChoiceField(queryset=UserCustom.objects.filter(is_staff=True), widget=forms.HiddenInput(), required=False)
+    date = forms.DateField(widget=forms.HiddenInput(), required=False, initial=date.today())
+
     class Meta:
         model = Adoption
-        fields = ['employee', 'date']
+        fields = ['employee', 'date', 'pet']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        cleaned_data['employee'] = UserCustom.objects.filter(is_staff=True).first()
+        cleaned_data['date'] = date.today()
+        return cleaned_data

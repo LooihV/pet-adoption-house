@@ -1,0 +1,12 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+{% if error %}
+<p class="error"> {{ error }}</p>
+{% endif %}
+<div class="success-card">
+    <h2>Adoption requested succesfully</h2>
+    <p>Thanks for being interested! We'll check your request soon.</p>
+    <a href="{% url 'catalogue' %}" class="success-button">Catalogue</a>
+  </div>
+{% endblock content %}
