@@ -1,0 +1,15 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+{% if error %}
+<p class="error"> {{ error }}</p>
+{% endif %}
+<div class="logout-card">
+    <h2>Are you sure that you want to logout?</h2>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <input type="submit" value="Yes, logout">
+    </form>
+    <a href="{% url 'index' %}">Cancel</a>
+  </div>
+{% endblock content %}
