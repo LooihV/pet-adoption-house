@@ -10,7 +10,7 @@ class RegistrationForm(forms.ModelForm):
     last_name = forms.CharField(max_length=30, required=True)
     birthDate = forms.DateField(required=True)
     phone = forms.CharField(max_length=20, required=True)
-    address = forms.CharField(max_length=100, required=True)
+    adress = forms.CharField(max_length=100, required=True)
     identificationType = forms.ModelChoiceField(queryset=IdentificationType.objects.all())
     identificationDocument = forms.CharField(max_length=50, required=True)
 
