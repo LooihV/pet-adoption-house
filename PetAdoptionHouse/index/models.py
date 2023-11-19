@@ -109,19 +109,13 @@ class Event(models.Model):
     name = models.CharField(max_length=50)
     def __str__(self) -> str:
         return self.name
-
+    
 class Adoption(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Adoptant")
     employee = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Employee")
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    status = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="Event", default=None)
     date = models.DateField()
     def __str__(self) -> str:
         return f"Adoption #{str(self.id)}"
-    
-class History(models.Model):
-    adoption = models.ForeignKey(Adoption, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    notes = models.CharField(max_length=256)
-    def __str__(self) -> str:
-        return f"History for adoption #{str(self.adoption.id)}"
 
