@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     birthDate = models.DateField(null=True)
     phone = models.CharField(max_length=20)
-    adress = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
     identificationType = models.ForeignKey(IdentificationType, on_delete=models.CASCADE, null=True)
     identificationDocument = models.CharField(max_length=50, null=True)
 
