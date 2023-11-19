@@ -13,7 +13,7 @@
  html {
      font-size: 62.5%;
 }
- :root {
+  :root {
      --color-black: rgb(0, 0, 0);
      --color-white: #ffffff;
      --color-olive: #371557;
@@ -599,4 +599,98 @@
 
 .a-request-title {
   font-size: 1.2rem;
+}
+
+.adoption-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.adoption-card {
+  border: 1px solid var(--color-gray-400);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  max-height: 600px;
+  font-size: 1.5rem;
+}
+
+.adoption-info {
+  padding: 15px;
+}
+
+.adoption-info p {
+  margin: 5px 0;
+}
+
+.adoption-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accept-button,
+.decline-button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+.accept-button {
+  background-color: var(--color-buttons);
+  color: var(--color-white);
+}
+
+.decline-button {
+  background-color: #ff5555;
+  color: var(--color-white);
+}
+
+.accept-button:hover,
+.decline-button:hover {
+  background-color: var(--color-shine-blug);
+}
+.pet-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.profile-card {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid var(--color-gray-400);
+  border-radius: 8px;
+  background-color: var(--color-gray-100);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-photo-container {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.profile-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.profile-info {
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+.profile-info p {
+  margin: 10px 0;
 }

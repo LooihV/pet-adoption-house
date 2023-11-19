@@ -411,3 +411,4 @@ PetAdoptionHouse/index/static/admin
 PetAdoptionHouse/index/static/django_extensions
 PetAdoptionHouse/index/migrations
 # End of https://www.toptal.com/developers/gitignore/api/images
+PetAdoptionHouse/logs

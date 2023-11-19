@@ -15,7 +15,7 @@
       <ul class="header__list">
         <li class="header__item header__item--home"><a href="{% url 'catalogue'%}">Catalogue</a></li>
         <li class="header__item header__item--catalogue"><a href="{% url 'adoptions'%}">Adoptions</a></li>
-        <li class="header__item header__item--account"><a href="#">Account</a></li>
+        <li class="header__item header__item--account"><a href="{% url 'profile' %}">Profile</a></li>
         {% if user.is_authenticated %}
         <li class="header__item header__item--logout"><a href="{% url 'logout' %}">Log Out</a></li>
         {% else %}

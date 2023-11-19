@@ -11,7 +11,8 @@ urlpatterns = [
     path("catalogue", views.catalogue, name="catalogue"),
     path('pet/<int:pet_id>/', views.pet, name='pet'),
     path('adoption/<int:pet_id>/', views.request_adoption, name='adoption'),
-    path("account", views.account, name="account"),
+    path("profile", views.profile, name="profile"),
     path("adoptions", views.adoptions, name="adoptions"),
     path("logout", views.logout_view, name="logout"),
+
 ]

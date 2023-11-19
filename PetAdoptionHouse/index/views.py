@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm, AdoptionForm
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
-from .models import IdentificationType, Pet, Adoption
+from .models import IdentificationType, Pet, Adoption, Event
 from .models import User as UserCustom
 from django.shortcuts import get_object_or_404
 from datetime import date
@@ -84,11 +84,40 @@ def request_adoption(request, pet_id):
 
 
 def adoptions(request):
-    adoptions = Adoption.objects.all()
-    return HttpResponse(f"Adoption")
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            adoptions = Adoption.objects.all()
 
-def account(request):
-    return HttpResponse(f"Account! xd")
+            if request.method == 'POST':
+                adoption_id = request.POST.get('adoption_id')
+                action = request.POST.get('action')
+
+                if action in ['accept', 'decline']:
+                    adoption = get_object_or_404(Adoption, id=adoption_id)
+                    
+                    print(f"Adoption ID: {adoption.id}, Action: {action}, Status: {adoption.status.id}")
+                    
+                    if action == 'accept':
+                        adoption.status = Event.objects.get(id=2)
+                        adoption.pet.available = False
+                        adoption.pet.save()
+                    elif action == 'decline':
+                        adoption.status = Event.objects.get(id=3)
+
+                    adoption.save()
+        else:
+            adoptions = Adoption.objects.filter(user=request.user)
+
+        return render(request, 'index/adoptions.html', {'adoptions': adoptions})
+    else:
+        return redirect('login')
+
+def profile(request):
+    if request.user.is_authenticated:
+        user = request.user
+        return render(request, 'index/profile.html', {'user': user})
+    else:
+        return redirect('login')
 
 def logout_view(request):
     if request.method == 'POST':

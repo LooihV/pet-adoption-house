@@ -51,6 +51,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self) -> str:
         return str(self.first_name)
+    
+    def calculate_age(self):
+        today = date.today()
+        birth_date = self.birthDate
+        age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+        return age
 
     objects = CustomUserManager()
     USERNAME_FIELD = 'email'
