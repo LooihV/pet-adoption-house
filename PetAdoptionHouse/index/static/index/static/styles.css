@@ -337,6 +337,7 @@
     border-radius: 8px;
     max-width: 300px;
     overflow: hidden;
+    margin-bottom: 2rem;
   }
   
   .pet_card--photo {
