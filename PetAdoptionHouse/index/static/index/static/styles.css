@@ -13,25 +13,28 @@
  html {
      font-size: 62.5%;
 }
-/* Colores */
  :root {
-     --color-olive: #155751;
-     --color-gray-100: #f7fafc;
-     --color-gray-200: #edf2f7;
-     --color-gray-300: #e2e8f0;
-     --color-gray-400: #cbd5e0;
-     --color-gray-500: #a0aec0;
-     --color-gray-600: #718096;
-     --color-gray-700: #4a5568;
-     --color-gray-800: #19465f;
-     --color-gray-900: #2d3748;
-     --color-blug: #3aa7a7;
-     --color-greenc:#5cdbbb;
-     --color-middle: #308b8b;
-     --color-shadows: #113244;
-     --color-darker-blug: #266969;
+     --color-black: rgb(0, 0, 0);
+     --color-white: #ffffff;
+     --color-olive: #371557;
+     --color-gray-100: #faf7fc;
+     --color-gray-200: #f3edf7;
+     --color-gray-300: #eae2f0;
+     --color-gray-400: #d5cbe0;
+     --color-gray-500: #b2a0c0;
+     --color-gray-600: #877196;
+     --color-gray-700: #5a4a68;
+     --color-gray-800: #40195f;
+     --color-gray-900: #3b2d48;
+     --color-shine-blug: #dfd3e8;
+     --color-blug: #6d3aa7;
+     --color-greenc:#a85cdb;
+     --color-middle: #5f308b;
+     --color-shadows: #301144;
+     --color-darker-blug: #4b2669;
+     --color-buttons: #78359e;
+     --logo-url: 'https://lh3.googleusercontent.com/pw/ADCreHfYoJnbPPAwDcVJxjO62aUsx-VzsbUsyyu5SmNUieQJm1j0fgDS0i664BXdx_qdq1SfyzrkW1dvJtOvrYNAG0LtihKfc0F7G4RO4fpwwOuHf3lGTBo=w2400';
 }
-/* Header */
  .header {
      background-color: var(--color-olive);
      color: var(--color-gray-100);
@@ -71,11 +74,9 @@
      font-weight: bold;
      float: right;
 }
-/* Botones hover */
  .header__item a:hover {
      background-color: var(--color-gray-800);
 }
-/* Footer */
  .footer {
      background-color: var(--color-gray-800);
      color: var(--color-gray-100);
@@ -130,7 +131,7 @@
  .screen__background__shape1 {
      height: 520px;
      width: 520px;
-     background: #FFF;
+     background: var(--color-white);
      top: -50px;
      right: 120px;
      border-radius: 72px;
@@ -175,7 +176,7 @@
 }
  .login__input {
      border: none;
-     border-bottom: 2px solid #D1D1D4;
+     border-bottom: 2px solid var(--color-gray-400);
      background: none;
      padding: 20px;
      padding-left: 24px;
@@ -188,12 +189,12 @@
      border-bottom-color: var(--color-olive);
 }
  .login__submit {
-     background: #fff;
+     background: var(--color-white);
      font-size: 14px;
      margin-top: 30px;
      padding: 16px 20px;
      border-radius: 26px;
-     border: 1px solid #d3e8e5;
+     border: 1px solid var(--color-gray-400);
      text-transform: uppercase;
      font-weight: 700;
      display: flex;
@@ -220,14 +221,14 @@
      text-align: center;
      bottom: -10rem;
      right: 0px;
-     color: #fff;
+     color: var(--color-white);
 }
  .social-login__a {
      padding: 2rem 0rem 0rem 0rem;
      text-decoration: none;
-     color: #fff;
+     color: var(--color-white);
      font-size: 1.5rem;
-	 border: white;
+	 border: var(--color-white);
 }
  .register {
      width: 400px;
@@ -245,7 +246,7 @@
 }
  .register__input {
      border: none;
-     border-bottom: 2px solid #D1D1D4;
+     border-bottom: 2px solid var(--color-gray-400);
      background: none;
      padding: 10px;
      padding-left: 24px;
@@ -258,12 +259,12 @@
      border-bottom-color: var(--color-olive);
 }
  .register__submit {
-     background: #fff;
+     background: var(--color-gray-400);
      font-size: 14px;
      margin-top: 30px;
      padding: 16px 20px;
      border-radius: 26px;
-     border: 1px solid #d3e8e5;
+     border: 1px solid var(--color-shine-blug);
      text-transform: uppercase;
      font-weight: 700;
      display: flex;
@@ -280,7 +281,7 @@
 }
  .register__select {
      border: none;
-     border-bottom: 2px solid #D1D1D4;
+     border-bottom: 2px solid var(--color-gray-400);
      background: none;
      padding: 10px;
      padding-left: 24px;
@@ -288,7 +289,6 @@
      width: 75%;
      transition: .2s;
      appearance: none;
-    /* Oculta la apariencia nativa del menú desplegable */
      -moz-appearance: none;
      -webkit-appearance: none;
 }
@@ -321,7 +321,7 @@
   }
   
   .register__select--dropdown {
-	padding-right: 0; /* Aumenta el padding para hacer espacio para el ícono */
+	padding-right: 0;
   }
 
   .pet-grid {
@@ -378,7 +378,7 @@
   .pet-detail-card__image {
     position: relative;
     width: 100%;
-    padding-top: 75%; /* Relación de aspecto 4:3 */
+    padding-top: 75%;
     overflow: hidden;
   }
 
@@ -413,8 +413,8 @@
   }
   
   .request-adoption-button {
-    background-color: #42b983;
-    color: #fff;
+    background-color: var(--color-buttons);
+    color: var(--color-white);
     border: none;
     border-radius: 4px;
     padding: 0.5rem 1rem;
@@ -427,17 +427,17 @@
   }
   
   .request-adoption-button:hover {
-    background-color: #359e71;
+    background-color: var(--color-buttons);
   }
   @media screen and (max-width: 768px) {
     .pet-detail-card__image {
-      padding-top: 56.25%; /* Relación de aspecto 16:9 en dispositivos móviles */
+      padding-top: 56.25%;
     }
   }
   .request-adoption-link {
     display: inline-block;
-    background-color: #42b983;
-    color: #fff;
+    background-color: var(--color-buttons);
+    color: var(--color-white);
     border: none;
     border-radius: 4px;
     padding: 0.5rem 1rem;
@@ -446,16 +446,16 @@
   }
   
   .request-adoption-link:hover {
-    background-color: #359e71;
+    background-color: var(--color-buttons);
   }
   
   .request-adoption-button[disabled] {
-    background-color: #ccc;
+    background-color: var(--color-gray-500);
     cursor: not-allowed;
   }
   
   .request-adoption-button[disabled]:hover {
-    background-color: #ccc;
+    background-color: var(--color-gray-500);
   }
   
   .request-adoption-button[disabled]:after {
@@ -464,8 +464,8 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #000;
-    color: #fff;
+    background-color: var(--color-black);
+    color: var(--color-white);
     padding: 0.5rem;
     font-size: 1.2rem;
     white-space: nowrap;
@@ -477,7 +477,7 @@
     max-width: 400px;
     margin: 15% auto;
     padding: 30px;
-    background-color: #fff;
+    background-color: var(--color-white);
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     text-align: center;
@@ -494,8 +494,8 @@
   }
   
   .logout-card input[type="submit"] {
-    background-color: #42b983;
-    color: #fff;
+    background-color: var(--color-buttons);
+    color: var(--color-white);
     border: none;
     border-radius: 4px;
     padding: 12px 24px;
@@ -512,21 +512,19 @@
   }
   
   .logout-card input[type="submit"]:hover {
-    background-color: #359e71;
+    background-color: var(--color-buttons);
   }
   
   .logout-card a:hover {
     text-decoration: underline;
   }
 
-  /* Agrega estos estilos al final de tu archivo CSS existente */
-
 .success-card {
   width: 60%;
   max-width: 400px;
   margin: 15% auto;
   padding: 30px;
-  background-color: #fff;
+  background-color: var(--color-white);
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   text-align: center;
@@ -545,8 +543,8 @@
 
 .success-button {
   display: inline-block;
-  background-color: #42b983;
-  color: #fff;
+  background-color: var(--color-buttons);
+  color: var(--color-white);
   border: none;
   border-radius: 4px;
   padding: 12px 24px;
@@ -556,18 +554,16 @@
 }
 
 .success-button:hover {
-  background-color: #359e71;
+  background-color: var(--color-buttons);
 }
-
-/* Agrega estos estilos al final de tu archivo CSS existente */
 
 .adoption-request-card {
   width: 60%;
   max-width: 400px;
   margin: 5% auto;
   padding: 30px;
-  background-color: #fff;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-white);
+  box-shadow: 0px 2px 6px var(--color-black);
   border-radius: 8px;
   text-align: center;
 }
@@ -588,8 +584,8 @@
 }
 
 .submit-button {
-  background-color: #42b983;
-  color: #fff;
+  background-color: var(--color-buttons);
+  color: var(--color-white);
   border: none;
   border-radius: 4px;
   padding: 12px 24px;
@@ -598,7 +594,7 @@
 }
 
 .submit-button:hover {
-  background-color: #359e71;
+  background-color: var(--color-buttons);
 }
 
 .a-request-title {
