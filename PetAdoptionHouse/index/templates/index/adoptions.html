@@ -1,0 +1,32 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+  <h1>User Adoptions</h1>
+
+  <div class="adoption-cards-grid">
+    {% for adoption in adoptions %}
+      <div class="adoption-card">
+        <div class="adoption-info">
+          <img src="{{ adoption.pet.photo }}" alt="{{ adoption.pet.name }}" class="pet-photo">
+          <p><strong>Adoption ID:</strong> {{ adoption.id }}</p>
+          <p><strong>User:</strong> {{ adoption.user.first_name }} {{ adoption.user.last_name}}</p>
+          <p><strong>Employee:</strong> {{ adoption.employee.first_name }}</p>
+          <p><strong>Pet:</strong> {{ adoption.pet.name }}</p>
+          <p><strong>Date:</strong> {{ adoption.date }}</p>
+          <p><strong>Status:</strong> {{ adoption.status }}</p>
+        </div>
+
+        {% if user.is_staff and adoption.status.id == 1 %}
+          <div class="adoption-actions">
+            <form method="post" action="{% url 'adoptions' %}">
+              {% csrf_token %}
+              <input type="hidden" name="adoption_id" value="{{ adoption.id }}">
+              <button type="submit" name="action" value="accept" class="accept-button">Accept</button>
+              <button type="submit" name="action" value="decline" class="decline-button">Decline</button>
+            </form>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

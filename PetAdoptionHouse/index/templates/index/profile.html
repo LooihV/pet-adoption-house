@@ -1,0 +1,21 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+  <div class="profile-card">
+    <h1>Profile</h1>
+
+    <div class="profile-info">
+      <div class="profile-photo-container">
+        <img src="https://lh3.googleusercontent.com/pw/ADCreHfWTiuDOehVJoAmw7ATmRGtTN1n62RIhz5gP0f1gei1EqeYgmLtgTYkq5xpWRa868UQkwmwuYfl6UxbopuIC94GGx4CggtOanUuXLJpti5-3BMByAE=w2400" alt="Photo" class="profile-photo">
+      </div>
+      
+      <p><strong>Name:</strong> {{ user.get_full_name }}</p>
+      <p><strong>Age:</strong> {{ user.calculate_age }}</p> 
+      {% if user.is_staff %}
+        <p><strong>Staff:</strong> {{ user.is_staff }}</p>  
+      {% endif %}
+      <p><strong>Address:</strong> {{ user.adress }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+    </div>
+  </div>
+{% endblock %}
