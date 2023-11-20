@@ -171,7 +171,7 @@
 }
  .login__icon {
      position: absolute;
-     top: 30px;
+     top: 23px;
      color: var(--color-darker-blug);
 }
  .login__input {
@@ -284,13 +284,9 @@
      border-bottom: 2px solid var(--color-gray-400);
      background: none;
      padding: 10px;
-     padding-left: 24px;
      font-weight: 700;
      width: 75%;
      transition: .2s;
-     appearance: none;
-     -moz-appearance: none;
-     -webkit-appearance: none;
 }
  .register__select::after {
      content: '\f078';
@@ -321,7 +317,7 @@
   }
   
   .register__select--dropdown {
-	padding-right: 0;
+	padding-right: 2.5rem;
   }
 
   .pet-grid {
