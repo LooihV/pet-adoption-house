@@ -41,7 +41,7 @@ def register_view(request):
                 if form.is_valid():
                     user_profile = form.save()
                     login(request, user_profile)
-                    return redirect('home')
+                    return redirect('catalogue')
             except Exception as e:
                 erorr_message = "Error: "+str(e)
                 return render(request, 'index/login.html', {'form':form, 'error_message': erorr_message})
